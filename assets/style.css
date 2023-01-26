@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #474954;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+header {
+    float:none;
+    color: #D5DECE;
+    text-align: center;
+    padding: 14px 17px;
+    justify-content: center;
+    text-decoration:solid;
+    font-size: 20px;
+}
+
+.main-Container {
+    height: 500px;
+    margin: 0 auto;
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    width:50%;
+}
+
+section button {
+    outline:none;
+    background-color: #7284A8;
+    padding: 5px;px;
+    font-size:1.5em;
+    margin-top: 5%;
+}
+
+.button-grid button {
+    outline:none;
+    background-color: #7284A8;
+    padding: 5px;px;
+    font-size:1.5em;
+    margin-top: 5%;
+}
