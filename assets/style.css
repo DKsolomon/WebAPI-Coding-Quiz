@@ -32,15 +32,20 @@ header {
 section button {
     outline:none;
     background-color: #7284A8;
-    padding: 5px;px;
+    padding: 5px;
     font-size:1.5em;
     margin-top: 5%;
+}
+
+.button-grid {
+    display: flex;
+    flex-direction: column;
 }
 
 .button-grid button {
     outline:none;
     background-color: #7284A8;
-    padding: 5px;px;
+    padding: 5px;
     font-size:1.5em;
     margin-top: 5%;
 }
