@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE-edge" />
-        <meta name="viewport" content="width=device-width, initial-scael=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./assets/style.css" />
         <title>Javascript Coding Quiz</title>
     </head>
@@ -13,12 +13,13 @@
         <header>
             <h1> Javascript Coding Quiz</h1>
             <a href="#">High Scores</a>
+            <p id="score"></p>
             <p id="timer">Timer: </p>
         </header>   
 
 
     <div class="main-Container">
-        <section id ="starter-Page">
+        <section id ="starter-page">
             <p>Welcome to this Javascript Coding Quiz! Answer the series of questions
                 as quickly as you can before time runs out!! For every wrong question,
                  you will lose 10 seconds on your timer. Good Luck!
@@ -27,15 +28,10 @@
         </section>
         
         <div id="quiz" class="hide">
-        <div id="questions">Question</div>
+        <div id="questions"></div>
+        <div id="choices" class="choices"></div>
+        <div id="check-answer"></div>
         
-        <div class="button-grid" id="choices">
-            <button id="btnA">A</button>
-            <button id="btnB">B</button>
-            <button id="btnC">C</button>
-            <button id="btnD">D</button>
-        </div>
-        </div>
     </div>
 
     <script src="./assets/script.js"></script>

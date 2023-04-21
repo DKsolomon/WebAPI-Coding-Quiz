@@ -37,12 +37,12 @@ section button {
     margin-top: 5%;
 }
 
-.button-grid {
+.choices {
     display: flex;
     flex-direction: column;
 }
 
-.button-grid button {
+.choices button {
     outline:none;
     background-color: #7284A8;
     padding: 5px;
