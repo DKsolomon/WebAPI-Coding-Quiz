@@ -12,7 +12,7 @@ var submitMsg = document.getElementById("sbmtmsg")
 var highScore = document.getElementById("high-score-page");
 var clear = document.getElementById("clear");
 var back = document.getElementById("back");
-var hsPage = document.getElementById("high-score-page");
+var hsPage = document.getElementById("hsbutton");
 var welcomeText = document.getElementById("starter-page");
 
 var quizQuestions = [
