@@ -12,7 +12,7 @@
     <body>
         <header>
             <h1> Javascript Coding Quiz</h1>
-            <a href="#">High Scores</a>
+            <button id="hsbutton">High Scores</button>
             <p id="timer">Timer: </p>
         </header>   
 
@@ -26,12 +26,28 @@
                 <button id="start">Start Quiz</button>
         </section>
         
-        <div id="quiz" class="hide">
+        <div id="quiz">
         <div id="questions"></div>
         <div id="choices" class="choices"></div>
         <div id="check-answer"></div>
-        
     </div>
+
+    <div id="results-page">
+        <h2>Quiz Results</h2>
+        <p>Your score is: <span id="score"></span></p>
+        <label>Enter your Initials!</label>
+        <input type="text" id="initialInput">
+        <div id="sbmtmsg"></div>
+        <button id="submit">Submit</button>
+    </div>
+
+    <div id="high-score-page">
+        <h2>High Scores</h2>
+        <ol id="highscore"></ol>
+        <button id="clear">Clear High Scores</button>
+        <button id="back">Back</button>
+    </div>
+    
 
     <script src="./assets/script.js"></script>
     </body>

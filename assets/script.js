@@ -3,7 +3,16 @@ var timer = document.getElementById("timer");
 var questionBox = document.getElementById("questions");
 var multipleChoice = document.getElementById("choices");  
 var checkAnswer = document.getElementById("check-answer");
+var score = document.getElementById("score");
+var results = document.getElementById("results-page")
+var initials = document.getElementById("initialInput")
 var startBtn = document.getElementById("start");
+var submitBtn = document.getElementById("submit");
+var submitMsg = document.getElementById("sbmtmsg")
+var highScore = document.getElementById("high-score-page");
+var clear = document.getElementById("clear");
+var back = document.getElementById("back");
+var hsPage = document.getElementById("high-score-page");
 var welcomeText = document.getElementById("starter-page");
 
 var quizQuestions = [
@@ -39,10 +48,15 @@ var quizQuestions = [
     var timeLeft = 60;
     var timerInterval = 0;
     var penalty = 10;
+    var quizScore = timeLeft
+    var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+    
 
     function startQuiz() {
-        welcomeText.setAttribute("class", "hide");
-        quiz.removeAttribute("class");
+        welcomeText.style.display = "none";
+        results.style.display = "none";
+        quiz.style.display = "block";
+        highScore.style.display = "none";
 
         grabQuestions();
         startTimer();
@@ -56,6 +70,10 @@ var quizQuestions = [
             if(timeLeft === 0 || currentQuestionIndex === quizQuestions.length) {
                 clearInterval(timerInterval);
             } 
+
+            if (timeLeft <= 0) {
+                showScore();
+            }
         
         }, 1000)
     }
@@ -81,12 +99,11 @@ var quizQuestions = [
 
     function answerCheck() {
         if (this.value !== quizQuestions[currentQuestionIndex].answer) {
-            timer -= 10;
-            
-        checkAnswer.textContext = "Wrong!";
+            timeLeft -= 10;
+        checkAnswer.textContent = "Wrong!";
         checkAnswer.style.color = "red";
     } else {
-        checkAnswer.textContext = "Correct!";
+        checkAnswer.textContent = "Correct!";
         checkAnswer.style.color = "green" 
     }
 
@@ -100,10 +117,82 @@ currentQuestionIndex++;
     
     }
 
-    function showScore() {
+    function showScore(event) {
+        event.preventdefault();
         clearInterval(timerInterval);
+       quiz.style.display = "none";
+       results.style.display = "block";
+       highScore.style.display = "none";
 
-    }
+       score.textContent = timeLeft;
+
+       if (initials !== "") {
         
+        var initialStor = initials.value.trim();
+        var newScore = {
+            score: timeLeft,
+            initials: initialStor,
+        };
+
+        highscores.push(newScore);
+        window.localStorage.setItem("highscores", JSON.stringify(highscores));
+        submitMsg.textContent = "Submitted!"
+       }
+    }
+
+    function highScorePage(event) {
+         event.preventdefault();
+         
+        welcomeText.style.display = "none"
+        quiz.style.display = "none";
+        results.style.display = "none";
+        highScore.style.display = "block";
+
+
+       
+        highscores.sort(function(a, b){
+            return b.score - a.score;
+        });
+    
+        highscores.forEach(function(score){
+          
+            var li = document.createElement("li");
+            li.textContent = score.initials + " - " + score.score;
+          
+            var ol = document.getElementById("highscore");
+            ol.appendChild(li);
+        });
+    }
+    
+    
+    function clearHS (event) {
+        event.preventdefault();
+
+        window.localStorage.removeItem("highscores");
+        window.location.reload();
+    }
+
+    function backToStart(event) {
+     welcomeText.style.display = "block";
+        quiz.style.display = "none";
+        results.style.display = "none";
+        highScore.style.display = "none";
+
+       
+    }
+    
+
+        
+    submitBtn.addEventListener('click', showScore);
     
     startBtn.addEventListener('click', startQuiz);
+
+    hsPage.addEventListener('click', highScorePage);
+
+    back.addEventListener('click', backToStart);
+   
+    clear.addEventListener('click', clearHS);
+
+ 
+clearHS();
+backToStart();
