@@ -7,6 +7,7 @@
 body {
     background-color: #474954;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    color:#D5DECE
 }
 
 header {
@@ -29,11 +30,15 @@ header {
     width:50%;
 }
 
-section button {
+button {
     outline:none;
     background-color: #7284A8;
     padding: 5px;
     font-size:1.5em;
+    
+}
+
+section button {
     margin-top: 5%;
 }
 
