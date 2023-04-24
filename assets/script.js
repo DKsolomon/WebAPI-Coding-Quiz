@@ -118,7 +118,6 @@ currentQuestionIndex++;
     }
 
     function showScore(event) {
-        event.preventdefault();
         clearInterval(timerInterval);
        quiz.style.display = "none";
        results.style.display = "block";
@@ -141,7 +140,7 @@ currentQuestionIndex++;
     }
 
     function highScorePage(event) {
-         event.preventdefault();
+         event.preventDefault();
          
         welcomeText.style.display = "none"
         quiz.style.display = "none";
@@ -166,7 +165,7 @@ currentQuestionIndex++;
     
     
     function clearHS (event) {
-        event.preventdefault();
+       event.preventDefault();
 
         window.localStorage.removeItem("highscores");
         window.location.reload();
@@ -194,5 +193,4 @@ currentQuestionIndex++;
     clear.addEventListener('click', clearHS);
 
  
-clearHS();
 backToStart();
