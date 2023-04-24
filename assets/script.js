@@ -1,3 +1,5 @@
+//List of Target Variables
+
 var quiz = document.getElementById("quiz");
 var timer = document.getElementById("timer");
 var questionBox = document.getElementById("questions");
@@ -15,6 +17,7 @@ var back = document.getElementById("back");
 var hsPage = document.getElementById("hsbutton");
 var welcomeText = document.getElementById("starter-page");
 
+// Question array for the quiz
 var quizQuestions = [
     {
         question: "Inside which HTML element do we put the JavaScript?",
@@ -44,6 +47,7 @@ var quizQuestions = [
     }];
 
 
+
     var currentQuestionIndex = 0;
     var timeLeft = 60;
     var timerInterval = 0;
@@ -51,6 +55,7 @@ var quizQuestions = [
     var quizScore = timeLeft
     var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
     
+// This function starts the quiz once the Start button is pushed 
 
     function startQuiz() {
         welcomeText.style.display = "none";
@@ -58,10 +63,12 @@ var quizQuestions = [
         quiz.style.display = "block";
         highScore.style.display = "none";
 
+// Will also grab funtions to show questions as well as start the timer
         grabQuestions();
         startTimer();
     }
     
+// This funtion starts the timer for the quiz
 
     function startTimer() {
         timerInterval = setInterval(()  => {
@@ -77,7 +84,8 @@ var quizQuestions = [
         
         }, 1000)
     }
-
+// This function grabs information on the questions array, as well as creates a button for each multiple choice
+//answer
 
     function grabQuestions() {
         var currentQuestion = quizQuestions[currentQuestionIndex];
@@ -97,6 +105,9 @@ var quizQuestions = [
         }); 
     }
 
+//this function checks if the selected multiple choice answer is correct or not,
+// and will display a message based on your choice
+
     function answerCheck() {
         if (this.value !== quizQuestions[currentQuestionIndex].answer) {
             timeLeft -= 10;
@@ -106,7 +117,8 @@ var quizQuestions = [
         checkAnswer.textContent = "Correct!";
         checkAnswer.style.color = "green" 
     }
-
+// this section of the function runs through the array, and will either 
+//grab the next question in the array or end the quiz depending on how many questions are left.
 currentQuestionIndex++;
 
     if (currentQuestionIndex === quizQuestions.length) {
@@ -117,6 +129,7 @@ currentQuestionIndex++;
     
     }
 
+//this funtion shows the results screen, and uploads user initals and score to local storage once submitted
     function showScore(event) {
         clearInterval(timerInterval);
        quiz.style.display = "none";
@@ -138,7 +151,7 @@ currentQuestionIndex++;
         submitMsg.textContent = "Submitted!"
        }
     }
-
+//this function renders the high score page.
     function highScorePage(event) {
          event.preventDefault();
          
@@ -148,7 +161,7 @@ currentQuestionIndex++;
         highScore.style.display = "block";
 
 
-       
+
         highscores.sort(function(a, b){
             return b.score - a.score;
         });
@@ -163,6 +176,7 @@ currentQuestionIndex++;
         });
     }
     
+    //this funtion will clear the high scores from local storage.
     
     function clearHS (event) {
        event.preventDefault();
@@ -171,6 +185,7 @@ currentQuestionIndex++;
         window.location.reload();
     }
 
+    //this funtion is the back button to take you back to welcome page of the quiz
     function backToStart(event) {
      welcomeText.style.display = "block";
         quiz.style.display = "none";
@@ -180,7 +195,7 @@ currentQuestionIndex++;
        
     }
     
-
+// list of event listeners for different buttons on the page 
         
     submitBtn.addEventListener('click', showScore);
     
